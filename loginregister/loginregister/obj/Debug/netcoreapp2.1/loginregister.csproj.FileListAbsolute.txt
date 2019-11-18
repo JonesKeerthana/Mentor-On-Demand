@@ -1,0 +1,14 @@
+C:\Users\802542\Desktop\mentorproject\loginregister\loginregister\obj\Debug\netcoreapp2.1\loginregister.csproj.CoreCompileInputs.cache
+C:\Users\802542\Desktop\mentorproject\loginregister\loginregister\obj\Debug\netcoreapp2.1\loginregister.AssemblyInfoInputs.cache
+C:\Users\802542\Desktop\mentorproject\loginregister\loginregister\obj\Debug\netcoreapp2.1\loginregister.AssemblyInfo.cs
+C:\Users\802542\Desktop\mentorproject\loginregister\loginregister\bin\Debug\netcoreapp2.1\loginregister.deps.json
+C:\Users\802542\Desktop\mentorproject\loginregister\loginregister\bin\Debug\netcoreapp2.1\loginregister.runtimeconfig.json
+C:\Users\802542\Desktop\mentorproject\loginregister\loginregister\bin\Debug\netcoreapp2.1\loginregister.runtimeconfig.dev.json
+C:\Users\802542\Desktop\mentorproject\loginregister\loginregister\bin\Debug\netcoreapp2.1\loginregister.dll
+C:\Users\802542\Desktop\mentorproject\loginregister\loginregister\bin\Debug\netcoreapp2.1\loginregister.pdb
+C:\Users\802542\Desktop\mentorproject\loginregister\loginregister\obj\Debug\netcoreapp2.1\loginregister.csprojAssemblyReference.cache
+C:\Users\802542\Desktop\mentorproject\loginregister\loginregister\obj\Debug\netcoreapp2.1\loginregister.RazorAssemblyInfo.cache
+C:\Users\802542\Desktop\mentorproject\loginregister\loginregister\obj\Debug\netcoreapp2.1\loginregister.RazorAssemblyInfo.cs
+C:\Users\802542\Desktop\mentorproject\loginregister\loginregister\obj\Debug\netcoreapp2.1\loginregister.RazorTargetAssemblyInfo.cache
+C:\Users\802542\Desktop\mentorproject\loginregister\loginregister\obj\Debug\netcoreapp2.1\loginregister.dll
+C:\Users\802542\Desktop\mentorproject\loginregister\loginregister\obj\Debug\netcoreapp2.1\loginregister.pdb

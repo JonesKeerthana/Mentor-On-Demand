@@ -1,0 +1,14 @@
+C:\Users\802542\Desktop\mentorproject\mentornuser\mentornuser\obj\Debug\netcoreapp2.1\mentornuser.csproj.CoreCompileInputs.cache
+C:\Users\802542\Desktop\mentorproject\mentornuser\mentornuser\obj\Debug\netcoreapp2.1\mentornuser.AssemblyInfoInputs.cache
+C:\Users\802542\Desktop\mentorproject\mentornuser\mentornuser\obj\Debug\netcoreapp2.1\mentornuser.AssemblyInfo.cs
+C:\Users\802542\Desktop\mentorproject\mentornuser\mentornuser\bin\Debug\netcoreapp2.1\mentornuser.deps.json
+C:\Users\802542\Desktop\mentorproject\mentornuser\mentornuser\bin\Debug\netcoreapp2.1\mentornuser.runtimeconfig.json
+C:\Users\802542\Desktop\mentorproject\mentornuser\mentornuser\bin\Debug\netcoreapp2.1\mentornuser.runtimeconfig.dev.json
+C:\Users\802542\Desktop\mentorproject\mentornuser\mentornuser\bin\Debug\netcoreapp2.1\mentornuser.dll
+C:\Users\802542\Desktop\mentorproject\mentornuser\mentornuser\bin\Debug\netcoreapp2.1\mentornuser.pdb
+C:\Users\802542\Desktop\mentorproject\mentornuser\mentornuser\obj\Debug\netcoreapp2.1\mentornuser.csprojAssemblyReference.cache
+C:\Users\802542\Desktop\mentorproject\mentornuser\mentornuser\obj\Debug\netcoreapp2.1\mentornuser.RazorAssemblyInfo.cache
+C:\Users\802542\Desktop\mentorproject\mentornuser\mentornuser\obj\Debug\netcoreapp2.1\mentornuser.RazorAssemblyInfo.cs
+C:\Users\802542\Desktop\mentorproject\mentornuser\mentornuser\obj\Debug\netcoreapp2.1\mentornuser.RazorTargetAssemblyInfo.cache
+C:\Users\802542\Desktop\mentorproject\mentornuser\mentornuser\obj\Debug\netcoreapp2.1\mentornuser.dll
+C:\Users\802542\Desktop\mentorproject\mentornuser\mentornuser\obj\Debug\netcoreapp2.1\mentornuser.pdb
