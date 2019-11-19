@@ -15,9 +15,9 @@ namespace mentornuser.Controllers
         mentorContext con = new mentorContext();
         // GET: api/user
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IEnumerable<Search> Get()
         {
-            return new string[] { "value1", "value2" };
+            return con.Search.ToList();
         }
 
         // GET: api/user/5

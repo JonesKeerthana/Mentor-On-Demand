@@ -67,9 +67,12 @@ namespace loginregister.Models
                     .HasMaxLength(10);
 
                 entity.Property(e => e.MLinkedinurl)
-                    .IsRequired()
                     .HasColumnName("m_linkedinurl")
                     .HasMaxLength(100);
+
+                entity.Property(e => e.MName)
+                    .HasColumnName("m_name")
+                    .HasMaxLength(50);
 
                 entity.Property(e => e.MPassword)
                     .IsRequired()

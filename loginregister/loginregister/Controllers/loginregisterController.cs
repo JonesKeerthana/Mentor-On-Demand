@@ -8,20 +8,20 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace loginregister.Controllers
-{  
+{
     [Route("api/[controller]")]
     [ApiController]
     public class loginregisterController : ControllerBase
     {
         mentorContext con = new mentorContext();
         // GET: api/loginregister
-      
+
         [Route("GetAdmin/{uname}/{pass}")]
-  
+
         [HttpGet(Name = "GetAdmin")]
-        public Admin GetAdmin(string uname,string pass)
+        public Admin GetAdmin(string uname, string pass)
         {
-            return con.Admin.FromSql("sploginadmin '"+uname+"','"+pass+"' ").SingleOrDefault();
+            return con.Admin.FromSql("sploginadmin '" + uname + "','" + pass + "' ").SingleOrDefault();
         }
 
         [Route("GetMentor/{uname}/{pass}")]
@@ -44,18 +44,18 @@ namespace loginregister.Controllers
             return "value";
         }
 
-        [Route(" PostMentor")]
+        [Route("PostMentor")]
         [HttpPost]
         public void PostMentor([FromBody] Mentordtls mn)
         {
-            con.Database.ExecuteSqlCommand("spregistermentor '"+mn.MUsername+ "','" + mn.MPassword + "','" + mn.MLinkedinurl+ "','" +mn.MRegdattime + "','" + mn.MYearsofexperience + "'");
+            con.Database.ExecuteSqlCommand("spregistermentor '" + mn.MName + "','" + mn.MUsername + "','" + mn.MPassword + "','" + mn.MLinkedinurl + "','" + mn.MYearsofexperience + "'");
         }
 
-        [Route(" PostUser")]
+        [Route("PostUser")]
         [HttpPost]
         public void PostUser([FromBody] Userdtls us)
         {
-            con.Database.ExecuteSqlCommand("spregisteruser '" + us.Username + "','" + us.Password+ "','" + us.Firstname + "','" + us.Lastname + "','" + us.Contactnumber+ "','" + us.Regdatetime + "'");
+            con.Database.ExecuteSqlCommand("spregisteruser '" + us.Username + "','" + us.Password + "','" + us.Firstname + "','" + us.Lastname + "','" + us.Contactnumber + "'");
         }
 
         // PUT: api/loginregister/5

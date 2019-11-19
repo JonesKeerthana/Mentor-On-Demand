@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using loginregister.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace loginregister.Controllers
 {
@@ -35,8 +36,9 @@ namespace loginregister.Controllers
 
         // PUT: api/Admin/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public void Put(int id, [FromBody] Skills val)
         {
+            con.Skills.Add(val);
         }
 
         // DELETE: api/ApiWithActions/5

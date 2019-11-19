@@ -20,6 +20,7 @@ namespace mentornuser.Models
         public virtual DbSet<Mentorskills> Mentorskills { get; set; }
         public virtual DbSet<Skills> Skills { get; set; }
         public virtual DbSet<Training> Training { get; set; }
+        public virtual DbSet<Search> Search { get; set; }
         public virtual DbSet<Userdtls> Userdtls { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -67,9 +68,12 @@ namespace mentornuser.Models
                     .HasMaxLength(10);
 
                 entity.Property(e => e.MLinkedinurl)
-                    .IsRequired()
                     .HasColumnName("m_linkedinurl")
                     .HasMaxLength(100);
+
+                entity.Property(e => e.MName)
+                    .HasColumnName("m_name")
+                    .HasMaxLength(50);
 
                 entity.Property(e => e.MPassword)
                     .IsRequired()

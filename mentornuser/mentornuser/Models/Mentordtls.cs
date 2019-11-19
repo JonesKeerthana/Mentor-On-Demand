@@ -11,6 +11,7 @@ namespace mentornuser.Models
         }
 
         public int MId { get; set; }
+        public string MName { get; set; }
         public string MUsername { get; set; }
         public string MPassword { get; set; }
         public string MLinkedinurl { get; set; }

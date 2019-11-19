@@ -1,9 +1,9 @@
 --register mentor--
-alter procedure spregistermentor(@mname nvarchar(40),@mpass nvarchar(40),@murl nvarchar(40),@mdate date,@mexp int)
+alter procedure spregistermentor(@name varchar(40),@mname nvarchar(40),@mpass nvarchar(40),@murl nvarchar(40),@mexp int)
 as
-insert into mentordtls values(@mname,@mpass,@murl,@mdate,null,@mexp,'yes')
-execute spregistermentor 'jeni@gmail.com','jeni','jeni','2019/11/20',6
-delete from mentordtls where m_userName='jk'
+insert into mentordtls values(@name,@mname,@mpass,@murl,getdate(),null,@mexp,'yes')
+execute spregistermentor 'jeni','jeni@gmail.com','jeni','jeni','2019/11/20',6
+delete from mentordtls where m_userName='jeni@gmail.com'
 select * from mentordtls
 
 --register user--
@@ -47,3 +47,5 @@ insert into skills values('Artificial Intelligance','Artificial Intelligance',19
 
 select * from skills
 
+--Search--
+create procedure spsearch
