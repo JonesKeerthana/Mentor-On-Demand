@@ -3,10 +3,7 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
-body {
-  font-family: Arial, Helvetica, sans-serif;
 
-}
 .bg
  {
      background-image: url("https://images.unsplash.com/3/doctype-hi-res.jpg?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=746&q=80");
@@ -18,35 +15,28 @@ body {
   box-sizing: border-box;
 }
 
-.card{
-    padding: 16px;
-         background: rgba(15, 14, 14, 0.644); /* This is for ie8 and below */
+.card
+          {
+            padding: 16px;
+         background: rgba(15, 14, 14, 0.178); /* This is for ie8 and below */
          background: rgba(19, 18, 18, 0.5); 
-}
+       }
+       
+/* 
+form {border: 3px solid #f1f1f1;} */
 
-form {border: 3px solid #f1f1f1;}
 
-input[type=text], input[type=password] {
-  width: 100%;
-  padding: 15px;
-  margin: 5px 0 22px 0;
-  display: inline-block;
-  border: none;
-  background: #f1f1f1;
-}
- 
-input[type=text]:focus, input[type=password]:focus {
-  background-color: #ddd;
-  outline: none;
-}
 
-/* Overwrite default styles of hr */
+
 hr {
   border: 1px solid #f1f1f1;
   margin-bottom: 25px;
 }
+/* .navbar
+{
+  background-color: #992600;
+} */
 
-/* Set a style for the submit button */
 .registerbtn {
   background-color: #4CAF50;
   color: white;
@@ -76,7 +66,6 @@ a {
   text-align: center;
 }
 
-   
 </style>
 
 
@@ -84,7 +73,7 @@ a {
 <body class="bg">
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
         <a class="navbar-brand" href="#">
-            <img src="/assets/final.png" style="width:40px;">
+          <img src="/assets/brain-512.png" style="width:40px;">
           </a>
           <ul class="navbar-nav">
               <div class="navbar-nav ml-auto">
@@ -93,6 +82,21 @@ a {
                 
               </div>
          </ul>
+         <button class="navbar-toggler" type="button" data-toggle="collapse" style="color:white" data-target="#collapsibleNavbar">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="collapsibleNavbar">
+           
+      <ul class="navbar-nav ml-auto">
+            
+        <li class="nav-item ">
+          <a class="nav-link" routerLink="/home"><i class="fa fa-home" aria-hidden="true"></i>Home</a>
+        </li>
+        <li class="nav-item ">
+            <a class="nav-link" routerLink='/login'>Login</a>
+          </li>
+      </ul>
+      </div>
     </nav>
     <br>
     <br>
@@ -105,7 +109,7 @@ a {
                           <a class="nav-link active" data-toggle="tab" href="#mentor">Mentor</a>
                         </li>
                         <li class="nav-item">
-                            <a class=" nav-link fade" data-toggle="tab" href="#user">User</a>
+                            <a class=" nav-link" data-toggle="tab" href="#user">User</a>
                           </li>
                   </ul>
 <div class="tab-content">
@@ -118,14 +122,16 @@ a {
       <div class="form-group" >
         <label for="mName"><b>Name</b></label>
         <input type="text" class="form-control" pattern="^[a-zA-Z]{1,15}$" required [class.is-invalid]=" mName.invalid &&  mName.touched"  id=" mName" placeholder="Enter First name" [(ngModel)]="mentor.mName" #mName="ngModel" name="mName" >
-    
-        <div *ngIf="(registerform.invalid && registerform.touched)" class="invalid-feedback alertmsg">
+<!--     
+        <div *ngIf="(registerform.valid || registerform.untouched)" class="invalid-feedback alertmsg">
                 <div *ngIf="mName.errors.required"><b>Name is required</b></div>
                 <div *ngIf="mName.errors.pattern"><b>Name should not contain numbers</b>
         </div>
   
-        </div>
-       
+        </div> -->
+        <b class="invalid-feedback alertmsg" [class.d-none]="mName.valid ||mName.untouched">
+          Name is Required or Invalid
+    </b>
       </div>
      </div> 
     
@@ -134,12 +140,15 @@ a {
         <label for="mUsername"><b>Email</b></label>
         <input type="text" class="form-control" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{3,}$" required [class.is-invalid]="mUsername.invalid && mUsername.touched"  id="mUsername" placeholder="Enter Email" name="mUsername"  [(ngModel)]="mentor.mUsername"  #mUsername="ngModel">
        
-        <div *ngIf="(registerform.invalid && registerform.touched)" class="invalid-feedback alertmsg">
+        <!-- <div *ngIf="(registerform.invalid && registerform.touched)" class="invalid-feedback alertmsg">
             <div *ngIf="mUsername.errors.required"><b>Email is required</b></div>
             <div *ngIf="mUsername.errors.pattern"><b>Email should not contain numbers</b>
           </div>
         
-    </div>
+    </div> -->
+    <b class="invalid-feedback alertmsg" [class.d-none]="mUsername.valid ||mUsername.untouched">
+      Email is Required or Invalid
+</b>
     </div>
     </div>
  </div>
@@ -163,8 +172,7 @@ a {
         <div class="form-group">
         <label for="mLinkedinurl"><b>LinkedIn URL</b></label>  <br/>
         <input type="text" class="form-control" id="mLinkedinurl" required [class.is-invalid]="mLinkedinurl.invalid && mLinkedinurl.touched" placeholder="Enter LinkedIn URL" name="mLinkedinurl" [(ngModel)]="mentor.mLinkedinurl" #mLinkedinurl="ngModel" required>
-          
-        <b class="invalid-feedback alertmsg" [class.d-none]="mLinkedinurl.valid ||mLinkedinurl.untouched">
+         <b class="invalid-feedback alertmsg" [class.d-none]="mLinkedinurl.valid ||mLinkedinurl.untouched">
                 LinkedIn URL is Required
            </b>
        </div>
@@ -183,7 +191,7 @@ a {
         <hr>
         <div class="card" class="alert alert-success" *ngIf="check">
     <div class="card-body mx-auto"> 
-    <p> {{msg}}</p>
+      <h6><strong>Registered successfully</strong></h6>
      </div> 
  </div>
         <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
@@ -196,20 +204,22 @@ a {
     <div id="user" class="container tab-pane fade">          
        <form (ngSubmit)="registeruser(user)" #registerform="ngForm">
 
-<div class="container con">  
+ <div class="container con">  
  <div class="row">   
      <div class="col-sm">
       <div class="form-group" >
         <label for="username"><b>Name</b></label>
         <input type="text" class="form-control" pattern="^[a-zA-Z]{1,15}$" required [class.is-invalid]=" username.invalid && username.touched"  id="username" placeholder="Enter name" [(ngModel)]="user.username" #username="ngModel" name="username" >
     
-        <div *ngIf="(registerform.invalid && registerform.touched)" class="invalid-feedback alertmsg">
+         <!-- <div *ngIf="(registerform.invalid && registerform.touched)" class="invalid-feedback alertmsg">
                 <div *ngIf="username.errors.required"><b>Name is required</b></div>
                 <div *ngIf="username.errors.pattern"><b>Name should not contain numbers</b>
-        </div>
+        </div> 
   
-        </div>
-       
+        </div> -->
+        <b class="invalid-feedback alertmsg" [class.d-none]="username.valid || username.untouched">
+          Name is required or invalid
+     </b> 
       </div>
      </div> 
     
@@ -218,48 +228,53 @@ a {
         <label for="password"><b>Password</b></label>
         <input type="password" class="form-control" required [class.is-invalid]="password.invalid && password.touched"  id="password" placeholder="Enter Password" name="password"  [(ngModel)]="user.password"  #password="ngModel">
        
-        <b class="invalid-feedback alertmsg" [class.d-none]="Password.valid ||Password.untouched">
-                Password is Required
+        <b class="invalid-feedback alertmsg" [class.d-none]="password.valid || password.untouched">
+                Password is Required or invalid
           </b>
         
     </div>
     </div>
-    </div>
- </div>
+  </div>
+
   <div class="row">
     
     <div class="col-sm">
         <div class="form-group">
             <label for="firstname"><b>First Name</b></label> 
-            <input type="text"  class="form-control" required [class.is-invalid]="firstname.invalid && firstname.touched" id="firstname"  placeholder="Enter Password" name="firstname" [(ngModel)]="user.firstname" #firstname="ngModel" required>
+            <input type="text"  class="form-control" pattern="^[a-zA-Z]{1,15}$" required [class.is-invalid]="firstname.invalid && firstname.touched" id="firstname"  placeholder="Enter First Name" name="firstname" [(ngModel)]="user.firstname" #firstname="ngModel">
       
-            <div *ngIf="(registerform.invalid && registerform.touched)" class="invalid-feedback alertmsg">
+           <!-- <div *ngIf="(registerform.invalid && registerform.touched)" class="invalid-feedback alertmsg">
                     <div *ngIf="firstname.errors.required"><b>First Name is required</b></div>
-                    <div *ngIf="firstname.errors.pattern"><b>First Name should not contain numbers</b>
-            </div>
-        </div>
+                    <div *ngIf="firstname.errors.pattern"><b>First Name should not contain numbers</b>  </div> 
+        </div> -->
+        <b class="invalid-feedback alertmsg" [class.d-none]="firstname.valid || firstname.untouched">
+          First name is required or invalid
+     </b> 
+        
       </div>
-  
+  </div>
       <div class="col-sm">
             <div class="form-group">
                 <label for="lastname"><b>Last Name</b></label> 
-                <input type="text"  class="form-control" required [class.is-invalid]=" lastname.invalid &&  lastname.touched" id=" lastname"  placeholder="Enter Last Name" name=" lastname" [(ngModel)]="user. lastname" # lastname="ngModel" required>
-          
-                <div *ngIf="(registerform.invalid && registerform.touched)" class="invalid-feedback alertmsg">
+                <input type="text"  class="form-control" pattern="^[a-zA-Z]{1,15}$" required [class.is-invalid]=" lastname.invalid && lastname.touched" id="lastname"  placeholder="Enter Last Name" name=" lastname" [(ngModel)]="user.lastname" #lastname="ngModel">
+<!--           
+          <div *ngIf="(registerform.invalid && registerform.touched)" class="invalid-feedback alertmsg">
                         <div *ngIf=" lastname.errors.required"><b>Last Name is required</b></div>
-                        <div *ngIf=" lastname.errors.pattern"><b>Last Name should not contain numbers</b>
-                </div>
-            </div>
+                        <div *ngIf=" lastname.errors.pattern"><b>Last Name should not contain numbers</b> </div> 
+            </div> -->
+            <b class="invalid-feedback alertmsg" [class.d-none]="lastname.valid || lastname.untouched">
+              Last name is required or invalid
+         </b> 
           </div>
      </div>
      <div class="col-sm">
             <div class="form-group">
              <label for="contactnumber"><b>Contact</b></label>
-             <input type="text" pattern="[6-9]{1}[0-9]{9}" maxlength="10" class="form-control" required [class.is-invalid]="contactnumber.invalid && contactnumber.touched" id="contactnumber"  placeholder="Enter Contact" name="contactnumber" [(ngModel)]="user.contactnumber" #contactnumber="ngModel" required>
+             <input type="text" pattern="[6-9]{1}[0-9]{9}" maxlength="10" class="form-control" required [class.is-invalid]="contactnumber.invalid && contactnumber.touched" id="contactnumber"  placeholder="Enter Contact" name="contactnumber" [(ngModel)]="user.contactnumber" #contactnumber="ngModel">
           
              <b class="invalid-feedback alertmsg" [class.d-none]="contactnumber.valid || contactnumber.untouched">
-                 Contact is invalid
-            </b>
+                 Contact is required or invalid
+            </b> 
             
      
            </div>
@@ -267,26 +282,25 @@ a {
              </div>
  </div>
         <hr>
-        <div class="card" class="alert alert-success" *ngIf="check">
+        <div class="card" class="alert alert-success" *ngIf="check1">
     <div class="card-body mx-auto"> 
-     {{msg}}
+      <h6><strong>Registered successfully</strong></h6>
      </div> 
- </div>
+       </div>
         <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
     
         <button type="submit" [disabled]="registerform.invalid" class="registerbtn"><i class="fa fa-sign-in" aria-hidden="true"></i>Register</button>
-</div>
+
+      </div>
                            </form>   
-                        </div>
-                  </div>
+ 
 
 
 </div>
-
 </div>
  <footer class="bottom-footer footer bg-dark">
     <p style="margin-left:50px">copyright 2019</p>
    </footer>
-</body>
+
  
 

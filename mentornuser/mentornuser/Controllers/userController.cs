@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using mentornuser.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace mentornuser.Controllers
 {
@@ -13,25 +14,65 @@ namespace mentornuser.Controllers
     public class userController : ControllerBase
     {
         mentorContext con = new mentorContext();
+
+ 
         // GET: api/user
         [HttpGet]
-        public IEnumerable<Search> Get()
+        [Route("dispmentor")]
+        public IEnumerable<dispuserpage> dispmentor()
         {
-            return con.Search.ToList();
+            try { 
+            return con.dispuserpage.FromSql("spuser").ToList();
         }
-
+             catch (Exception e)
+            {
+                return null;
+            }
+}
+        
+        [HttpGet]
+        [Route("disptraining")]
+        public IEnumerable<Training> disptraining()
+        {
+            try { 
+            return con.Training.ToList();
+        }
+             catch (Exception e)
+            {
+                return null;
+            }
+}
         // GET: api/user/5
-        [HttpGet("{id}", Name = "Get")]
-        public string Get(int id)
+      
+        [HttpGet]
+        [Route("search/{id}")]
+        public IEnumerable<dispuserpage> search(int id)
         {
-            return "value";
+            try { 
+            return con.dispuserpage.FromSql("spsearch '" + id + "'").ToList();
         }
+             catch (Exception e)
+            {
+                return null;
+            }
+}
+      
 
+
+       
         // POST: api/user
         [HttpPost]
-        public void Post([FromBody] string value)
+        [Route("bookslot/{uid}/{mid}/{sid}")]
+        public void Post(int uid,int mid,int sid)
         {
+            try { 
+            this.con.Database.ExecuteSqlCommand("spchoosementor "+uid+ "," + mid + ","  + sid);
         }
+             catch (Exception e)
+            {
+               
+            }
+}
 
         // PUT: api/user/5
         [HttpPut("{id}")]

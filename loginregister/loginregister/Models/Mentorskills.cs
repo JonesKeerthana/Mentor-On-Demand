@@ -13,8 +13,7 @@ namespace loginregister.Models
         public int? MsTrainingdelivered { get; set; }
         public string MsFacilitiesoffered { get; set; }
 
-        public Mentorskills Ms { get; set; }
+        public Mentordtls MsM { get; set; }
         public Skills MsS { get; set; }
-        public Mentorskills InverseMs { get; set; }
     }
 }

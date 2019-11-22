@@ -101,9 +101,7 @@ namespace loginregister.Models
 
                 entity.ToTable("mentorskills");
 
-                entity.Property(e => e.MsId)
-                    .HasColumnName("ms_id")
-                    .ValueGeneratedOnAdd();
+                entity.Property(e => e.MsId).HasColumnName("ms_id");
 
                 entity.Property(e => e.MsFacilitiesoffered)
                     .HasColumnName("ms_facilitiesoffered")
@@ -121,10 +119,9 @@ namespace loginregister.Models
 
                 entity.Property(e => e.MsYearsofexperience).HasColumnName("ms_yearsofexperience");
 
-                entity.HasOne(d => d.Ms)
-                    .WithOne(p => p.InverseMs)
-                    .HasForeignKey<Mentorskills>(d => d.MsId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
+                entity.HasOne(d => d.MsM)
+                    .WithMany(p => p.Mentorskills)
+                    .HasForeignKey(d => d.MsMid)
                     .HasConstraintName("FK_mentorskills_mentorskills");
 
                 entity.HasOne(d => d.MsS)

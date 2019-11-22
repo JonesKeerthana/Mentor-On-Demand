@@ -15,11 +15,20 @@ namespace loginregister.Controllers
     {
         mentorContext con = new mentorContext();
         // GET: api/Admin
-        [HttpGet(Name = "Getskills")]
-        public IEnumerable<Skills> GetAdmin()
+       
+        [HttpGet]
+        [Route("Getskills")]
+        public IEnumerable<Skills> Getskills()
         {
+            try
+            { 
             return con.Skills.ToList();
         }
+             catch (Exception e)
+            {
+                return null;
+            }
+}
 
         // GET: api/Admin/5
         [HttpGet("{id}", Name = "Geta")]

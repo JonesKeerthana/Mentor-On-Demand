@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
@@ -20,8 +21,11 @@ namespace mentornuser.Models
         public virtual DbSet<Mentorskills> Mentorskills { get; set; }
         public virtual DbSet<Skills> Skills { get; set; }
         public virtual DbSet<Training> Training { get; set; }
-        public virtual DbSet<Search> Search { get; set; }
         public virtual DbSet<Userdtls> Userdtls { get; set; }
+        public virtual DbSet<Mentortechlist> Mentortechlist { get; set; }
+        public virtual DbSet<addskillsmentor> addskillsmentors { get; set; }
+        public virtual DbSet<dispuserpage> dispuserpage { get; set; }
+        public virtual DbSet<acceptuser> acceptuser { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -102,9 +106,7 @@ namespace mentornuser.Models
 
                 entity.ToTable("mentorskills");
 
-                entity.Property(e => e.MsId)
-                    .HasColumnName("ms_id")
-                    .ValueGeneratedOnAdd();
+                entity.Property(e => e.MsId).HasColumnName("ms_id");
 
                 entity.Property(e => e.MsFacilitiesoffered)
                     .HasColumnName("ms_facilitiesoffered")
@@ -122,10 +124,9 @@ namespace mentornuser.Models
 
                 entity.Property(e => e.MsYearsofexperience).HasColumnName("ms_yearsofexperience");
 
-                entity.HasOne(d => d.Ms)
-                    .WithOne(p => p.InverseMs)
-                    .HasForeignKey<Mentorskills>(d => d.MsId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
+                entity.HasOne(d => d.MsM)
+                    .WithMany(p => p.Mentorskills)
+                    .HasForeignKey(d => d.MsMid)
                     .HasConstraintName("FK_mentorskills_mentorskills");
 
                 entity.HasOne(d => d.MsS)

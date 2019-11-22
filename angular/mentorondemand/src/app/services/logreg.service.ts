@@ -13,18 +13,60 @@ import { mentorregister } from '../models/mentorregister';
 })
 export class LogregService {
   readonly Url="http://localhost:8219/api/loginregister";
+  readonly root="http://localhost:59513/api/Auth"
+  activeusername:string;
+  activeuserid:number;
+  status:boolean;
   constructor(private http: HttpClient,private _authService:UserauthService,private router:Router) { }
 loginadmin(uname:string,pass:string):Observable<admin>
 {
 return this.http.get<admin>(this.Url+'/'+'GetAdmin'+'/'+uname+'/'+pass);
 }
+GetTokenAdmin(username:string)
+  {
+    if(this.status==true)
+    {{{debugger}}
+      this.http.get(this.root+'/GetAdminToken/'+username).
+      subscribe((res:any)=>{
+        localStorage.setItem('token1',res.token);
+        console.log(res.token);
+       
+      })
+    }
+  }
+
 loginmentor(uname:string,pass:string):Observable<mentordtls>
 {
-return this.http.get<mentordtls>(this.Url+'/'+'GetUser'+'/'+uname+'/'+pass);
+return this.http.get<mentordtls>(this.Url+'/'+'GetMentor'+'/'+uname+'/'+pass);
 }
+GetTokenMentor(username:string)
+{
+  if(this.status==true)
+  {
+    this.http.get(this.root+'/GetMentorToken/'+username).
+    subscribe((res:any)=>{
+      localStorage.setItem('token3',res.token);
+      console.log(res.token);
+      this.router.navigateByUrl('/Admin/TechList');
+    })
+  }
+}
+
 loginuser(uname:string,pass:string):Observable<userdtls>
 {
-return this.http.get<userdtls>(this.Url+'/'+'GetMentor'+'/'+uname+'/'+pass);
+return this.http.get<userdtls>(this.Url+'/'+'GetUser'+'/'+uname+'/'+pass);
+}
+GetTokenUser(username:string)
+{
+  if(this.status==true)
+  {
+    this.http.get(this.root+'/GetUserToken/'+username).
+    subscribe((res:any)=>{
+      localStorage.setItem('token2',res.token);
+      console.log(res.token);
+      this.router.navigateByUrl('/Admin/TechList');
+    })
+  }
 }
 
 regmentor(mentor:mentorregister)

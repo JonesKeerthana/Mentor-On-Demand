@@ -1,1 +1,217 @@
-<p>mentorhome works!</p>
+<style>body {font-family: American Typewriter, serif;}
+    form {border: 3px solid #f1f1f1;}
+   /* Full-width input fields */
+   
+   .bg
+    {
+        background-image: url("https://images.unsplash.com/3/doctype-hi-res.jpg?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=746&q=80");
+        background-size:cover;
+        min-height:700px;
+    }
+    /* .card
+    {
+        background-image: url("https://previews.123rf.com/images/vinsalow/vinsalow1705/vinsalow170500015/78419278-grunge-texture-background-hd-photo-pyramide-light-concept.jpg");
+        background-size:cover;
+        min-width: height 1px;
+    }   */
+  
+     .footer {
+           
+           left: 0;
+           bottom: 0;
+           width: 100%;
+          position: fixed;
+           color: white;
+           text-align: center;
+        }
+    .con
+    {
+      padding: 16px;
+         background: rgba(48, 48, 45, 0.685); /* This is for ie8 and below */
+         background: rgba(48, 48, 45, 0.685); 
+    }
+    .card
+    {
+      padding: 16px;
+         background: rgba(48, 48, 45, 0.685); /* This is for ie8 and below */
+         background: rgba(48, 48, 45, 0.685); 
+    }
+    .th,.td
+    {
+      text-align: center;
+    }
+     </style>
+     <body class="bg">
+       <header> <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+            <a class="navbar-brand" href="#">
+                <img src="/assets/brain-512.png" style="width:40px;">
+              </a>
+              <div class="navbar-nav mr-auto">
+                    <a class="navbar-brand" href="#">Mentor On Demand</a>
+             
+                </div>
+              <button class="navbar-toggler" type="button" data-toggle="collapse" style="color:white" data-target="#collapsibleNavbar">
+                  <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                   
+              <ul class="navbar-nav  ml-auto">
+                    
+                <li class="nav-item">
+                  <a class="nav-link" routerLink="/home"><i class="fa fa-home" aria-hidden="true"></i>Home</a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link"><i class="fa fa-user-circle" aria-hidden="true"></i> Hi, {{logregservice.activeusername}}</a>
+                  </li>
+                  <li class="nav-item">
+                        <a class="nav-link" onclick="logout()" routerLink='/home'>Logout</a>
+                      </li>
+           
+              </ul>
+              </div>
+            </nav> </header>
+            <br>
+            
+
+            <div class="container con">
+              <h2 style="color: azure">My Skills</h2>
+              <b style="color: azure">Add new skill  :  </b>
+           <button class="btn btn-default btn-dark" data-toggle="modal" data-target="#myModal">Add Technology</button>
+                  <br/>  
+              <br><div class="container">
+                  <table class="table table-responsive-md table-secondary table-hover">
+                      <thead class="thead-dark">
+                    <tr>
+                      <th>Skill Name</th>
+                      <th>Selfrating</th>
+                      <th>Year of experiance</th>
+                    </tr>
+                      </thead>
+                   <tr *ngFor="let item of mentortech"  class="info">
+                     <td>{{item.skillName}}</td>
+                     <td>{{item.mskillSelfrating}}</td>
+                       <td>{{item.mskillYearsofexperience}}</td>
+                     
+                   </tr>
+                  </table> 
+                   
+                  </div>
+                </div>     
+               
+         
+  <!-- The Modal -->
+  <div class="modal" id="myModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+        
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <h4 class="modal-title">Add skill</h4>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+          
+          <!-- Modal body -->
+          <div class="modal-body">
+           
+              <form (ngSubmit)="addskillmentor(mentor)" #registerform="ngForm">
+
+                  <div class="container con">  
+                  <div class="row">   
+                     
+                       <div class="form-group" >
+                          <label for="msSid"><b>Skill</b></label>  <br/>
+                          <select id="msSid" [(ngModel)]="mentor.msSid" required [class.is-invalid]="msSid.invalid && msSid.touched" class="form-control" #msSid="ngModel" name="msSid">
+                           
+               <option value="1000">Java</option>
+               <option value="1001">Python</option>
+               <option value="1003">Machine Learning</option>
+               <option value="1004">R Programming</option>
+               <option value="1005">Artificial Intelligance</option>
+               <option value="1007">Csharp</option>
+              
+                     
+                         </select>  
+                         <b class="invalid-feedback alertmsg" [class.d-none]="msSid.valid ||msSid.untouched">
+                           Skill is Required or Invalid
+                     </b>
+                       </div>
+             
+                      </div>  
+                      
+        
+                     
+                     <div class=" row">
+                        <div class="form-group">
+                            <label for=" msSelfrating"><b> Self rating</b></label> 
+                            <input type="number" class="form-control" required [class.is-invalid]=" msSelfrating.invalid &&  msSelfrating.touched" id=" msSelfrating"  placeholder="Enter Year of experience" name="msSelfrating" [(ngModel)]="mentor. msSelfrating" #msSelfrating="ngModel">
+                      
+                            <b class="invalid-feedback alertmsg" [class.d-none]=" msSelfrating.valid || msSelfrating.untouched">
+                               Year of experience is Required
+                            </b>
+                        </div>
+                      </div>
+                         
+                     <div class="row">
+                         <div class="form-group">
+                             <label for="msYearsofexperience"><b>Year of experience</b></label> 
+                             <input type="number"  class="form-control" required [class.is-invalid]="msYearsofexperience.invalid && msYearsofexperience.touched" id="msYearsofexperience"  placeholder="Enter Year of experience" name="msYearsofexperience" [(ngModel)]="mentor.msYearsofexperience" #msYearsofexperience="ngModel">
+                       
+                             <b class="invalid-feedback alertmsg" [class.d-none]="msYearsofexperience.valid ||msYearsofexperience.untouched">
+                                Year of experience is Required
+                             </b>
+                         </div>
+                       </div>
+                   
+                      </div>
+                 
+                         <hr>
+                         <button type="submit" [disabled]="registerform.invalid" class="btn-default btn-dark">Register</button>
+                     <div class="card" class="alert alert-success" *ngIf="check">
+                     <div class="card-body mx-auto"> 
+                       <h6><strong>Skill added successfully</strong></h6>
+                      </div> 
+                     </div>
+                       
+                     
+                        
+               
+                  </form>
+
+          </div>
+          
+        
+          
+        </div>
+      </div>
+
+    
+  </div>
+     <br>
+          <div class="container">
+            <div class="card-columns">
+              <div class="card" style="width:220px;height:170px ;" *ngFor="let item of requested |async">
+                <div class="row">
+                  <div class="col-sm-4"></div>
+                  <div class="col-sm-4"></div>
+                  <div class="col-sm-4">  <span class="badge badge-pill badge-warning">New</span></div>
+                </div>
+                
+                <div class="card-body text-center">
+                    <span class="card-title " style="font-size:20px;color: azure;">{{item.acSkName}}</span><br/>
+                  
+                    <span style="float:center;color: azure;">Name     :{{item.acUsername}}</span><br/>
+                    <span style="float:center;color: azure">Contact  :{{item.acContactnumber}}</span><br/>
+                  
+                    <br/>
+                </div>
+              </div>
+            
+             
+            </div>
+      </div>
+
+            
+   <footer class="bottom-footer footer bg-dark">
+       <p style="margin-left:50px">copyright 2019</p>
+      </footer>
+    </body>

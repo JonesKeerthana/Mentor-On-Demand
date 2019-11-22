@@ -1,28 +1,15 @@
 
-<style>body {font-family: Arial, Helvetica, sans-serif;}
+<style>body {font-family: American Typewriter, serif;}
         form {border: 3px solid #f1f1f1;}
        /* Full-width input fields */
        
        .bg
         {
-            background-image: url("https://images.unsplash.com/3/doctype-hi-res.jpg?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=746&q=80");
-            background-size:cover;
+          background-image: url("https://images.unsplash.com/3/doctype-hi-res.jpg?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=746&q=80");
+             background-size:cover;
             min-height:700px;
         }
-             
-       input[type=text], input[type=password] {
-         width: 100%;
-         padding: 15px;
-         margin: 5px 0 22px 0;
-         display: inline-block;
-         border: none;
-         background: #f1f1f1;
-       }
-       
-       input[type=text]:focus, input[type=password]:focus {
-         background-color: #ddd;
-         outline: none;
-       }
+        
        
          button {
            background-color: #4CAF50;
@@ -46,7 +33,7 @@
          .card
           {
             padding: 16px;
-         background: rgba(15, 14, 14, 0.644); /* This is for ie8 and below */
+         background: rgba(15, 14, 14, 0.288); /* This is for ie8 and below */
          background: rgba(19, 18, 18, 0.5); 
        }
        
@@ -54,7 +41,7 @@
          <body class="bg">
              <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
                  <a class="navbar-brand" href="#">
-                     <img src="/assets/final.png" style="width:40px;">
+                  <img src="/assets/brain-512.png" style="width:40px;">
                    </a>
                    <ul class="navbar-nav">
                        <div class="navbar-nav ml-auto">
@@ -63,24 +50,33 @@
                          
                        </div>
                   </ul>
+                  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+           
+                    <ul class="navbar-nav  ml-auto">
+                          
+                      <li class="nav-item ">
+                        <a class="nav-link" routerLink="/home"><i class="fa fa-home" aria-hidden="true"></i>Home</a>
+                      </li>
+                    </ul>
+                    </div>
              </nav>
          <div class="row mt-5">
          <div class="card mx-auto " style="width:400px;">
                  
          <form  (ngSubmit)="onSubmit(email.value,password.value,role.value)" #loginForm="ngForm">
          <div class=container>
-           <b>Login</b>
+           <h5><b>Login</b></h5>
            <hr/>
            <div>
              <label><b>Email</b></label>&nbsp;
-             <input type="text" name="email" placeholder="Enter Email" #email="ngModel" ngModel required [class.is-invalid]="email.invalid && email.touched">
+             <input class=form-control type="text" name="email" placeholder="Enter Email" #email="ngModel" ngModel required [class.is-invalid]="email.invalid && email.touched">
              <!-- <small class="text-danger" [class.d-none]="userid.valid || userid.untouched">
                  UserId is Required
                </small> -->
            </div>
            <div>
              <label><b>Password</b></label>&nbsp;
-             <input type="password" name="password" placeholder="Enter password" #password="ngModel" ngModel required [class.is-invalid]=" password.invalid &&  password.touched">
+             <input class=form-control type="password" name="password" placeholder="Enter password" #password="ngModel" ngModel required [class.is-invalid]=" password.invalid &&  password.touched">
            
             <!-- <small class="text-danger" [class.d-none]="password.valid || password.untouched">
                Password is Required
@@ -88,7 +84,7 @@
            </div>
            <div >
                <label><b>Role</b></label>&nbsp;
-               <select  class="form-control" required [class.is-invalid]="role.invalid &&role.touched" placeholder="Enter Bloodgroup" id="role" ngModel #role="ngModel" name="role">
+               <select  class=form-control required [class.is-invalid]="role.invalid &&role.touched" placeholder="Enter Bloodgroup" id="role" ngModel #role="ngModel" name="role">
               
                     <option value="Admin">Admin</option>
                     <option value="Mentor">Mentor</option>

@@ -7,6 +7,7 @@ namespace mentornuser.Models
     {
         public Mentordtls()
         {
+            Mentorskills = new HashSet<Mentorskills>();
             Training = new HashSet<Training>();
         }
 
@@ -20,6 +21,7 @@ namespace mentornuser.Models
         public int? MYearsofexperience { get; set; }
         public string MActive { get; set; }
 
+        public ICollection<Mentorskills> Mentorskills { get; set; }
         public ICollection<Training> Training { get; set; }
     }
 }

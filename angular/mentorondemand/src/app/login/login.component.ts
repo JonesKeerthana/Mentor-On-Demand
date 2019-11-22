@@ -31,24 +31,31 @@ export class LoginComponent implements OnInit {
    }
  else{
    this.msg="";
+   this.logregservice.activeusername=this.adminlogin.aUsername;
+   this.logregservice.activeuserid=this.adminlogin.aId;
+   this.logregservice.status=true,this.logregservice.GetTokenAdmin(this.adminlogin.aUsername)
    this.router.navigate(['/adminhome'])
+
  }
 
     });
   }
-  else
-  if(role=='User')
+  else if(role=='Mentor')
   {
     this.logregservice.loginmentor(email,password).subscribe((x:mentordtls)=>
     {
       this.mentorlogin= x 
-      if(this.adminlogin==null)
+      if(this.mentorlogin==null)
       {
        this.msg="Incorrect UserId or Password"
      }
    else{
      this.msg="";
+     this.logregservice.activeusername=this.mentorlogin.mName;
+     this.logregservice.activeuserid=this.mentorlogin.mId;
+        this.logregservice.status=true,this.logregservice.GetTokenMentor(this.mentorlogin.mName)
      this.router.navigate(['/mentorhome'])
+ 
    }
   
     });
@@ -64,6 +71,9 @@ export class LoginComponent implements OnInit {
      else
      {
        this.msg="";
+       this.logregservice.activeusername=this.userlogin.username;
+       this.logregservice.activeuserid=this.userlogin.id;
+       this.logregservice.status=true,this.logregservice.GetTokenUser(this.userlogin.username)
        this.router.navigate(['/userhome'])
      }
     

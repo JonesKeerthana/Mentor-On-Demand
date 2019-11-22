@@ -15,48 +15,84 @@ namespace loginregister.Controllers
     {
         mentorContext con = new mentorContext();
         // GET: api/loginregister
-
+     
+        [HttpGet]
         [Route("GetAdmin/{uname}/{pass}")]
-
-        [HttpGet(Name = "GetAdmin")]
         public Admin GetAdmin(string uname, string pass)
         {
-            return con.Admin.FromSql("sploginadmin '" + uname + "','" + pass + "' ").SingleOrDefault();
+            try
+            {
+                return con.Admin.FromSql("sploginadmin '" + uname + "','" + pass + "' ").SingleOrDefault();
+            }
+           catch(Exception e)
+            {
+                return null;
+            }
         }
 
+       
+        [HttpGet]
         [Route("GetMentor/{uname}/{pass}")]
-        [HttpGet(Name = "GetMentor")]
         public Mentordtls GetMentor(string uname, string pass)
         {
+            try { 
             return con.Mentordtls.FromSql("sploginmentor '" + uname + "','" + pass + "' ").SingleOrDefault();
         }
+             catch (Exception e)
+            {
+                return null;
+            }
+        }
 
+       
+        [HttpGet]
         [Route("GetUser/{uname}/{pass}")]
-        [HttpGet(Name = "GetUser")]
         public Userdtls GetUser(string uname, string pass)
         {
+            try { 
             return con.Userdtls.FromSql("sploginuser '" + uname + "','" + pass + "' ").SingleOrDefault();
-        }
+                }
+             catch (Exception e)
+            {
+                return null;
+            }
+}
         // GET: api/loginregister/5
         [HttpGet("{id}", Name = "Get")]
         public string Get(int id)
         {
+            
             return "value";
-        }
+        
+}
 
-        [Route("PostMentor")]
+       
         [HttpPost]
+        [Route("PostMentor")]
         public void PostMentor([FromBody] Mentordtls mn)
         {
+            try { 
             con.Database.ExecuteSqlCommand("spregistermentor '" + mn.MName + "','" + mn.MUsername + "','" + mn.MPassword + "','" + mn.MLinkedinurl + "','" + mn.MYearsofexperience + "'");
-        }
+                }
+             catch (Exception e)
+            {
+                
+            }
+}
 
-        [Route("PostUser")]
+       
         [HttpPost]
+        [Route("PostUser")]
         public void PostUser([FromBody] Userdtls us)
         {
+            try { 
             con.Database.ExecuteSqlCommand("spregisteruser '" + us.Username + "','" + us.Password + "','" + us.Firstname + "','" + us.Lastname + "','" + us.Contactnumber + "'");
         }
+             catch (Exception e)
+            {
+                
+            }
+}
 
         // PUT: api/loginregister/5
         [HttpPut("{id}")]

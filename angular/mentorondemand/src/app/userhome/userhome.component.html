@@ -1,1 +1,116 @@
-<p>userhome works!</p>
+<style>body {font-family: American Typewriter, serif;}
+    form {border: 3px solid #f1f1f1;}
+   /* Full-width input fields */
+   
+   .bg
+    {
+        background-image: url("https://images.unsplash.com/3/doctype-hi-res.jpg?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=746&q=80");
+        background-size:cover;
+        min-height:700px;
+    }
+    /* .card
+    {
+        background-image: url("https://previews.123rf.com/images/vinsalow/vinsalow1705/vinsalow170500015/78419278-grunge-texture-background-hd-photo-pyramide-light-concept.jpg");
+        background-size:cover;
+        min-width: height 1px;
+    }   */
+    .card
+    {
+      padding: 16px;
+         background: rgba(48, 48, 45, 0.685); /* This is for ie8 and below */
+         background: rgba(48, 48, 45, 0.685); 
+    }
+     .footer {
+           
+           left: 0;
+           bottom: 0;
+           width: 100%;
+          position: fixed;
+           color: white;
+           text-align: center;
+        }
+    .jumbotron
+    {
+      
+      background-image: url("https://images.unsplash.com/photo-1457369804613-52c61a468e7d?ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80");
+        background-size:repeat
+    }
+     </style>
+     <body class="bg">
+       <header> <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+            <a class="navbar-brand" href="#">
+                <img src="/assets/brain-512.png" style="width:40px;">
+              </a>
+              <div class="navbar-nav mr-auto">
+                    <a class="navbar-brand" href="#">Mentor On Demand</a>
+             
+                </div>
+              <button class="navbar-toggler" type="button" data-toggle="collapse" style="color:white" data-target="#collapsibleNavbar">
+                  <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                   
+              <ul class="navbar-nav  ml-auto">
+                    
+                <li class="nav-item">
+                  <a class="nav-link" routerLink="/home"><i class="fa fa-home" aria-hidden="true"></i>Home</a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link"><i class="fa fa-user-circle" aria-hidden="true"></i> Hi, {{logregservice.activeusername}}</a>
+                  </li>
+                  <li class="nav-item">
+                        <a class="nav-link" onclick="logout()" routerLink='/home'>Logout</a>
+                      </li>
+           
+              </ul>
+              </div>
+            </nav> </header>
+            <div class="jumbotron">
+                <h4 style="text-align: center;">Search here</h4>
+<div class="row">
+  <div class="col-sm-4"></div>
+  <div class="col-sm-4">
+      <div class="input-group md-form form-sm form-1 pl-0" style="widows: 80px;">
+          <div class="input-group-prepend">
+            <span class="input-group-text purple lighten-3" id="basic-text1"><i class="fa fa-search" aria-hidden="true"></i></span>
+          </div>
+          <select class="mdb-select md-form colorful-select dropdown-primary form-control" (change)="onChange($event.target.value)"  searchable="Search here..">
+              <option></option>
+               <option *ngFor="let item of user1" value="{{item.skId}}">{{item.skName}}</option>
+             </select>
+        </div>
+  </div>
+  <div class="col-sm-4"></div>
+</div>
+            </div>
+
+            <br>
+            
+
+            <div class="container">
+                <div class="card-columns">
+                  <div class="card" style="width:300px;height:250px ;" *ngFor="let item  of filuser">
+                    <div class="card-body text-center">
+                        <span class="card-title " style="font-size:20px;color: azure">{{item.dmName}}</span><br/>
+                        <span style="float:center;color: azure">LinkedIn URL         :{{item.dmLinkedinurl}}</span><br/>
+                        <span style="float:center;color: azure">Skill Name           :{{item.dSkName}}</span><br/>
+                        <span style="float:center;color: azure">Experiance(In Years) :{{item.dMsYearsofexperience}}</span><br/>
+                        <span style="float:center;color: azure">Self Rating          :{{item.dMsSelfrating}}</span><br/>
+                        <span style="float:center;color: azure"><button class="btn btn-default btn-dark" (click)="bookslot(item.dmId,item.dSkId)">Book</button></span>
+                         
+                        <div class="alert alert-success" *ngIf="check && (item.dmId==var2) && (item.dSkId==var1)">
+                            <strong>{{msg}}</strong> 
+                          </div>
+                        <br/>
+                    </div>
+
+                  </div>
+                 
+                </div>
+              </div>
+   
+   <footer class="bottom-footer footer bg-dark">
+       <p style="margin-left:50px">copyright 2019</p>
+      </footer>
+    </body>
+

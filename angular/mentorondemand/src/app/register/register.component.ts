@@ -14,8 +14,10 @@ export class RegisterComponent implements OnInit {
   constructor(private logregservice:LogregService) { }
 mentor:mentorregister;
 user:userregister;
+
+check1:boolean=false;
 check:Boolean=false;
-msg:string="";
+
   ngOnInit() {
     this.mentor={
      
@@ -26,18 +28,29 @@ msg:string="";
       mYearsofexperience:null
  
     }
-    this.user=null;
+    this.user={
+      username:null,
+      password:null,
+      firstname:null,
+      lastname:null,
+      contactnumber:null
+    };
   }
   registeruser(user:userregister)
   {
-    
+    this.logregservice.reguser(user).subscribe(()=>
+    {
+      {{debugger}}
+this.check1=true;
+
+    });
   }
   registermentor(mentor:mentorregister)
   {
     this.logregservice.regmentor(mentor).subscribe(()=>
     {{{debugger}}
       this.check=true;
-      this.msg="Registered successfully"
+
     });
   }
 

@@ -5,5 +5,5 @@ export interface userregister
     firstname?:string
     lastname?:string
     contactnumber?:number
-    regdatetime?:Date  
+
 }
